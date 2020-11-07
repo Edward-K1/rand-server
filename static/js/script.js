@@ -5,6 +5,7 @@ let hourLabels = document.querySelectorAll(".hour-label");
 let clockFace = document.getElementById('clock');
 let wall = document.getElementById('wall');
 let serverStatus = document.getElementById('statusdiv');
+let getReportButton = document.getElementById('getreport');
 
 
 // default values
@@ -12,8 +13,8 @@ let dateObject = new Date('2020-11-03 12:00:00');
 let wallColor = 'chocolate';
 let clockColor = 'lavender';
 let hourLabelColor = 'black';
-let baseURL =  "https://rand-server.herokuapp.com";
-let serverId = ''
+let baseURL =  location.href;
+let serverId = '';
 
 
 style.innerHTML = `
@@ -24,14 +25,21 @@ style.innerHTML = `
   }
 `;
 
+
+
 startClock();
 setInterval(addElapsedTime, 5000);
+getReportButton.addEventListener('click', getFullReport);
+
+
 
 function addElapsedTime() {
   elapsedSeconds += 5;
   dateObject.setSeconds(dateObject.getSeconds() + 5);
   launchEvents();
 }
+
+
 
 function startClock(){
   fetch(baseURL + '/start', { 
@@ -46,6 +54,8 @@ function startClock(){
 
   document.head.appendChild(style);
 }
+
+
 
 function launchEvents() {
   let d = dateObject;
@@ -72,7 +82,19 @@ function launchEvents() {
 }
 
 
+
+
 function getFullReport() {
+  fetch(baseURL + '/report', { 
+    method: "POST",  
+    body: JSON.stringify({serverId:serverId}), 
+    headers: { 
+        "Content-type": "application/json; charset=UTF-8"
+    }
+     
+    }) 
+    .then(response => response.json()) 
+    .then(json => console.log(json)); 
 
 }
 

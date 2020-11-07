@@ -41,7 +41,7 @@ def run_task(server_id, program_time, wall_color, clock_face_color, hour_label_c
     return response
 
 
-def get_full_report():
+def get_full_report(server_id):
     random_server = ''
     for server in servers_db:
         if server.get_id() == server_id:
@@ -65,7 +65,8 @@ def get_random_color(excluded=[]):
 class RandomServer:
     def __init__(self):
         self.__id = uuid.uuid4().hex
-        self.start_time = datetime.now()
+        self.start_date = datetime.strftime(datetime.now(), "%A, %b %d, %Y")
+        self.start_time = datetime.strftime(datetime.now(), "%I:%M:%S%p")
         self.running_servers = 0
         self.stopped_servers = 0
         self.clock_color = 'lavender'
@@ -107,22 +108,26 @@ class RandomServer:
         self.messages.append(f'Report {self.running_servers} servers running')
 
     def create_log(self):
+        if len(self.event_log) >= 1000:
+            self.event_log.clear()
         log = {'program_time':self.program_time, 'event':','.join(self.tasks),
                 'message':','.join(self.messages), 'actual_time':self.actual_time,
                 'display_message':f'{self.program_time} - {", ".join(self.messages)}'.lower()}
         self.event_log.append(log)
+        
 
     def get_report(self):
-        return self.event_log
+        report_date = f'{self.start_date} {self.start_time.lower()}'
+        return {"data":self.event_log, "date": report_date}
 
 
     def get_response_data(self, program_time):
         response_message = f'{program_time} - {", ".join(self.messages)}'.lower()
-        self.messages.clear()
-        self.tasks.clear()
         data = {'message': response_message, 'wall_color': self.wall_color,
                 'clock_color': self.clock_color, 'label_color': self.label_color}
         self.create_log()
+        self.messages.clear()
+        self.tasks.clear()
         return data
 
 
