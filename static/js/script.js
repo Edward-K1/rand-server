@@ -12,7 +12,7 @@ let dateObject = new Date('2020-11-03 12:00:00');
 let wallColor = 'chocolate';
 let clockColor = 'lavender';
 let hourLabelColor = 'black';
-let baseURL =  "http://127.0.0.1:5000" // "https://rand-server.herokuapp.com";
+let baseURL =  "https://rand-server.herokuapp.com";
 let serverId = ''
 
 
