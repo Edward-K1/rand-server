@@ -1,0 +1,201 @@
+.clock {
+    border-radius: 50%;
+    background: lavender;
+    background-size: 88%;
+    height: 20em;
+    position: relative;
+    width: 20em;
+    margin: auto;
+  }
+
+  .wall {
+      background: linear-gradient(to bottom, chocolate, black);
+      width: 24em;
+      height: 24em;
+      margin: auto;
+      border-radius: 5px;
+      padding:2em;
+      box-sizing: border-box;
+      position: relative;
+      
+  }
+  
+  .clock:after {
+    background: #000;
+    border-radius: 50%;
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 5%;
+    height: 5%;
+    z-index: 10;
+  }
+
+  .minutes-container, .hours-container, .seconds-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .hours {
+    background:#000;
+    height: 20%;
+    left: 48.75%;
+    position: absolute;
+    top: 30%;
+    transform-origin: 50% 100%;
+    width: 2.5%;
+  }
+
+  .minutes {
+    background: #000;
+    height: 34%;
+    left: 49%;
+    position: absolute;
+    top: 16%;
+    transform-origin: 50% 100%;
+    width: 2%;
+  }
+
+  .seconds {
+    background: red;
+    height: 45%;
+    left: 49.5%;
+    position: absolute;
+    top: 14%;
+    transform-origin: 50% 80%;
+    width: 1%;
+    z-index: 8;
+  }
+
+  .hours-container {
+    animation: rotate 43200s infinite linear;
+  }
+  .minutes-container {
+    animation: rotate 3600s infinite linear;
+  }
+  .seconds-container {
+    animation: rotate 60s infinite linear;
+  }
+
+  .minutes-container {
+    animation: rotate 3600s infinite steps(60);
+  }
+  .seconds-container {
+    animation: rotate 60s infinite steps(60);
+  }
+
+
+  .parent-container {
+      background-color: black;
+      height: max-content;
+      width: max-content;
+      margin: auto;
+      color: white;
+      box-sizing: border-box;
+      position: relative;
+  }
+
+  .status {
+      display: block;
+      color: white;
+      text-align: center;
+      font-size: 1rem;
+      max-width: 310px;
+      margin: 5px;
+  }
+
+  .button {
+      width: 90%;
+      margin: auto;
+  }
+
+
+  .one {
+    top:24px;
+    left: 68%;
+  }
+
+  .two {
+    top:74px;
+    left: 83%;
+  }
+  .three {
+    top:136px;
+    left: 88%;
+  }
+  .four {
+    top:204px;
+    left: 83%;
+  }
+  .five {
+    top:250px;
+    left: 68%;
+  }
+  .six {
+    top:268px;
+    left: calc(50% - 10px);
+  }
+
+  .seven {
+    top:250px;
+    left: 26%
+  }
+  .eight {
+    top:202px;
+    left: 11%
+  }
+
+  .nine {
+    top:136px;
+    left: 6%
+  }
+
+  .ten {
+    top:74px;
+    left: 8.5%;
+  }
+
+  .eleven {
+    top:24px;
+    left: 24%;
+  }
+
+  .twelve {
+    top:5px;
+    left: calc(50% - 20px);
+  }
+
+  .hour-label {
+    position: absolute;
+    font-size: 40px;
+    color: black;
+  }
+
+  #getreport {
+      width: 100%;
+      border-radius: 5px;
+      padding: 0.5rem;
+      background: linear-gradient(to bottom right, red, black);
+      color: white;
+      outline: none;
+      border: none;
+      margin: auto;
+      margin: 10px 0;
+  }
+
+  #getreport:hover {
+      background:linear-gradient(to bottom right, green, black);
+
+  }
+
+  @media only screen and (max-width:410px) {
+      body {
+          width: 80%;
+      }
+  }
+
