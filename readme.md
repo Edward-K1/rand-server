@@ -1,7 +1,7 @@
 # Server Tracker - An Interview Challenge
 [View On Heroku](https://rand-server.herokuapp.com/)
 
-![Screenshot](https://github.com/Edward-K1/rand-server/blob/master/resources/images/screenshot.png?raw=true)
+![Screenshot](https://github.com/Edward-K1/rand-server/blob/master/resources/images/new-shot.png?raw=true)
 
 ## Technologies:
 - Python
