@@ -193,6 +193,64 @@
 
   }
 
+
+  .time-column {
+    width: 80px;
+  }
+
+  table {
+    border-collapse: collapse;
+
+  }
+
+  th {
+    font-weight: bold;
+    padding: 0px 8px;
+    border: 1px solid #000;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  
+  td {
+    padding: 0px 8px;
+    width: max-content;
+    border: 1px solid #000;
+    margin: 0;
+  }
+
+  .message-column > * {
+    display: block;
+  }
+
+  .message-span {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  #close {
+    right: 30px;
+    margin: 10px 0;
+    top: 0px;
+    position: absolute;
+    color: white;
+    background: red;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .report-container {
+    width: max-content;
+    padding: 50px 15px;
+    position: relative;
+    margin: auto;
+  }
+
+  .report-header {
+    margin: 10px  0;
+  }
+
   @media only screen and (max-width:410px) {
       body {
           width: 80%;

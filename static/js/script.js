@@ -6,6 +6,8 @@ let clockFace = document.getElementById('clock');
 let wall = document.getElementById('wall');
 let serverStatus = document.getElementById('statusdiv');
 let getReportButton = document.getElementById('getreport');
+let reportTable = document.getElementById('reporttable');
+let timeStarted = document.getElementById('timestarted');
 
 
 // default values
@@ -94,7 +96,36 @@ function getFullReport() {
      
     }) 
     .then(response => response.json()) 
-    .then(json => console.log(json)); 
+    .then(json => DisplayTable(json)); 
+
+}
+
+function DisplayTable(logData){
+  timeStarted.innerHTML = logData.date;
+  let tableHTML = `
+  <tr>
+      <th class="time-column">PROGRAM TIME</th>
+      <th>EVENT</th>
+      <th>MESSAGE</th>
+      <th class="time-column">ACTUAL TIME</th>
+      <th class="message-column">DISPLAY MESSAGE <span class="message-span">(sent to UI for display)</span></th>
+  </tr>
+  `
+  logData.data.forEach(log => {
+
+    tableHTML += `
+    <tr>
+        <td class="time-column">${log['program_time']}</td>
+        <td>${log['event']}</td>
+        <td>${log['message']}</td>
+        <td class="time-column">${log['actual_time']}</td>
+        <td>${log['display_message']}</td>
+    </tr>
+    ` 
+  });
+
+  reportTable.innerHTML = tableHTML;
+
 
 }
 
