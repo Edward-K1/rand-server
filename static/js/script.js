@@ -8,6 +8,8 @@ let serverStatus = document.getElementById('statusdiv');
 let getReportButton = document.getElementById('getreport');
 let reportTable = document.getElementById('reporttable');
 let timeStarted = document.getElementById('timestarted');
+let reportContainer = document.getElementById('reportcontainer');
+let closeReportButton = document.getElementById('close');
 
 
 // default values
@@ -32,6 +34,7 @@ style.innerHTML = `
 startClock();
 setInterval(addElapsedTime, 5000);
 getReportButton.addEventListener('click', getFullReport);
+closeReportButton.addEventListener('click', hideReport);
 
 
 
@@ -96,7 +99,9 @@ function getFullReport() {
      
     }) 
     .then(response => response.json()) 
-    .then(json => DisplayTable(json)); 
+    .then(json => DisplayTable(json));
+    
+    reportContainer.style.display = 'block';
 
 }
 
@@ -125,8 +130,10 @@ function DisplayTable(logData){
   });
 
   reportTable.innerHTML = tableHTML;
+}
 
-
+function hideReport(){
+  reportContainer.style.display = 'none';
 }
 
 function setClockValues(responseJson) {
